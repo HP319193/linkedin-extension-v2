@@ -6,21 +6,21 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
             let counter = 0;
 
-            setInterval(() => {
-                chrome.tabs.update(tabs[0].id, { url: links[counter] });
+            // setInterval(() => {
+            // chrome.tabs.update(tabs[0].id, { url: links[counter] });
 
-                setTimeout(() => {
+            // setTimeout(() => {
 
-                    setInterval(() => {
-                        chrome.tabs.sendMessage(tabs[0].id, { action: 'click' }, function (response) {
-                            console.log(response.status);
-                            // send_data(response.data);
-                        });
-                    }, 10000);
-                }, 40000);
+            // setInterval(() => {
+            chrome.tabs.sendMessage(tabs[0].id, { action: 'click' }, function (response) {
+                // console.log(response.status);
+                // send_data(response.data);
+            });
+            // }, 1000);
+            // }, 1000);
 
-                counter++;
-            }, 60000);
+            counter++;
+            // }, 60000);
         });
     }
 });
