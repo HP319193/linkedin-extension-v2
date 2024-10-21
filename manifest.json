@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Page Content Extractor",
-    "version": "1.0",
+    "name": "Linkdin Profile Scraper",
+    "version": "2.0",
     "permissions": [
         "tabs",
         "activeTab",
@@ -19,6 +19,7 @@
         }
     ],
     "action": {
+        "default_icon": "linkedin.png",
         "default_popup": "popup.html"
     },
     "background": {
