@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
         }, 1000);
 
-        persons = document.querySelectorAll("li.reusable-search__result-container");
+        persons = document.querySelectorAll("li.grid.grid__col--lg-8.block.org-people-profile-card__profile-card-spacing");
         sendResponse({ len: persons.length });
 
     }
