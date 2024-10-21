@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'click') {
         const more_but = document.querySelector("button#ember549");
-        if (more_but) next_but.click();
+        if (more_but) more_but.click();
         sendResponse({ "status": "clicked" })
     }
 

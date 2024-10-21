@@ -13,7 +13,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
                     setInterval(() => {
                         chrome.tabs.sendMessage(tabs[0].id, { action: 'click' }, function (response) {
-                            console.log(response.data);
+                            console.log(response.status);
                             // send_data(response.data);
                         });
                     }, 10000);
