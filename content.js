@@ -1,7 +1,7 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'click') {
-        const next_but = document.querySelector("span.artdeco-button__text:contains(Next)");
-        if (next_but) next_but.click();
+        const more_but = document.querySelector("button#ember549");
+        if (more_but) next_but.click();
         sendResponse({ "status": "clicked" })
     }
 

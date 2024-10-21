@@ -1,24 +1,26 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'start') {
         console.log("Scraping is started!");
+        const links = message.links;
 
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            let counter = 1;
-            setInterval(() => {
-                chrome.tabs.sendMessage(tabs[0].id, { action: "getProfile" }, function (response) {
-                    const profile_links = response.links;
-                    console.log(profile_links);
+            let counter = 0;
 
-                    send_data(profile_links);
-                });
+            setInterval(() => {
+                chrome.tabs.update(tabs[0].id, { url: links[counter] });
 
                 setTimeout(() => {
-                    let page_url = `https://www.linkedin.com/search/results/people/?heroEntityKey=urn%3Ali%3Aorganization%3A4764&keywords=blackrock&origin=CLUSTER_EXPANSION&page=${counter}&position=0&searchId=05bc0915-428c-4ae5-8bbd-520f98920718`
-                    chrome.tabs.update(tabs[0].id, { url: page_url });
-                }, 8000);
+
+                    setInterval(() => {
+                        chrome.tabs.sendMessage(tabs[0].id, { action: 'click' }, function (response) {
+                            console.log(response.data);
+                            // send_data(response.data);
+                        });
+                    }, 10000);
+                }, 40000);
+
                 counter++;
-                console.log(counter);
-            }, 30000);
+            }, 60000);
         });
     }
 });
