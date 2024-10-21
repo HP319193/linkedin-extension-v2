@@ -4,7 +4,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         const links = message.links;
 
         chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-            let counter = 0;
+            // let counter = 0;
 
             // setInterval(() => {
             // chrome.tabs.update(tabs[0].id, { url: links[counter] });
@@ -13,13 +13,13 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
             // setInterval(() => {
             chrome.tabs.sendMessage(tabs[0].id, { action: 'click' }, function (response) {
-                // console.log(response.status);
+                console.log(response.len);
                 // send_data(response.data);
             });
             // }, 1000);
             // }, 1000);
 
-            counter++;
+            // counter++;
             // }, 60000);
         });
     }
