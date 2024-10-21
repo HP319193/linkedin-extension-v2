@@ -1,8 +1,12 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.action === 'click') {
-        const more_but = document.querySelector("button#ember549");
-        if (more_but) more_but.click();
-        sendResponse({ "status": "clicked" })
+        // const more_but = document.querySelector("button#ember549");
+        // if (more_but) sendResponse({ "status": "yes" })
+        // else sendResponse({ "status": "no" })
+        setInterval(() => {
+            window.scrollBy(0, 200);
+        }, 1000);
+
     }
 
     if (message.action === 'getProfile') {
